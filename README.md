@@ -40,7 +40,6 @@
  
 * Designed & Programmed by H.Asaba
 * t: [@Belboz16](https://twitter.com/belboz16)
-* a: https://www.amazon.co.jp/-/e/B01FBJGMBK
  
 # License
  
