@@ -46,7 +46,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.logout_button = new System.Windows.Forms.Button();
+            this.logwrite_button = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -219,18 +219,18 @@
             this.textBox5.Size = new System.Drawing.Size(72, 19);
             this.textBox5.TabIndex = 16;
             // 
-            // logout_button
+            // logwrite_button
             // 
-            this.logout_button.BackColor = System.Drawing.Color.Gainsboro;
-            this.logout_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logout_button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.logout_button.Location = new System.Drawing.Point(180, 214);
-            this.logout_button.Name = "logout_button";
-            this.logout_button.Size = new System.Drawing.Size(151, 25);
-            this.logout_button.TabIndex = 17;
-            this.logout_button.Text = "結果を記録する。";
-            this.logout_button.UseVisualStyleBackColor = false;
-            this.logout_button.Click += new System.EventHandler(this.logout_button_Click);
+            this.logwrite_button.BackColor = System.Drawing.Color.Gainsboro;
+            this.logwrite_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logwrite_button.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.logwrite_button.Location = new System.Drawing.Point(180, 214);
+            this.logwrite_button.Name = "logwrite_button";
+            this.logwrite_button.Size = new System.Drawing.Size(151, 25);
+            this.logwrite_button.TabIndex = 17;
+            this.logwrite_button.Text = "結果を記録する。";
+            this.logwrite_button.UseVisualStyleBackColor = false;
+            this.logwrite_button.Click += new System.EventHandler(this.logwrite_button_Click);
             // 
             // textBox6
             // 
@@ -291,7 +291,7 @@
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.logout_button);
+            this.Controls.Add(this.logwrite_button);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -345,7 +345,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button logout_button;
+        private System.Windows.Forms.Button logwrite_button;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;

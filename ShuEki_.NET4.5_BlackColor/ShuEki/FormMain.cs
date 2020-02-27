@@ -26,8 +26,10 @@ namespace WindowsApplication1
             ShuEkiInit();
         }
 
+        // プログラム開始時初期化処理
         public void ShuEkiInit()
         {
+            // 
             // exe.configファイルの設定から、黒画面モードか通常画面モードか切り替える
             // 
             if(Settings.Default.BlackColorSettings == true)
@@ -37,11 +39,11 @@ namespace WindowsApplication1
                 // コントロールの色をセット
                 this.BackColor = Color.Black;
 
-                logout_button.BackColor = Color.Black;
+                logwrite_button.BackColor = Color.Black;
                 start_button.BackColor = Color.Black;
                 BackrollButton.BackColor = Color.Black;
 
-                logout_button.ForeColor = Color.Teal;
+                logwrite_button.ForeColor = Color.Teal;
                 start_button.ForeColor = Color.Teal;
                 BackrollButton.ForeColor = Color.Teal;
 
@@ -116,10 +118,13 @@ namespace WindowsApplication1
             ShuEkiBackrollButtonOffOn(false);
 
             // ログ出力ボタン非表示・無効
-            ShuEkiLogoutButtonOffOn(false);
+            ShuEkiLogWriteButtonOffOn(false);
+
+            // 現在筮竹を立てている状況で処理を選択（0:表示消去 → 1:下位 → 2:上位 → 3:変爻 → 0:...）
+            zeichiku.target = 0;
         }
 
-        // 占い結果画像をクリアする。
+        // 占い結果画像クリア処理
         public void ShuEkiClear()
         {
             pictureBox1.Image = yinyan.BLANK_BMP;
@@ -130,7 +135,7 @@ namespace WindowsApplication1
             pictureBox6.Image = yinyan.BLANK_BMP;
         }
 
-        // テキストボックスクリア
+        // テキストボックスクリア処理
         public void ShuEkiClearText()
         {
             textBox1.Text = "";
@@ -144,14 +149,14 @@ namespace WindowsApplication1
             textBox9.Text = "";
         }
 
-        // テキスト出力（原文）
+        // テキスト出力（原文）処理
         public void ShuEkiDispTextChinensis( byte kekka, byte henkou )
         {
             textBox2.Text = rikujusika.genbun_taii[kekka];
             textBox4.Text = rikujusika.genbun_tanden[henkou];
         }
 
-        // 後戻りボタンの表示・有効／非表示・無効切替
+        // 本卦之卦切り替えボタンの表示／非表示処理
         public void ShuEkiBackrollButtonOffOn(bool offon)
         {
             if (offon)
@@ -167,25 +172,25 @@ namespace WindowsApplication1
             }
         }
 
-        // ログ出力ボタンの表示・有効／非表示・無効切替
-        public void ShuEkiLogoutButtonOffOn(bool offon)
+        // ログ出力ボタンの表示／非表示処理
+        public void ShuEkiLogWriteButtonOffOn(bool offon)
         {
             if (offon)
             {
-                logout_button.Enabled = true;
-                logout_button.Visible = true;
+                logwrite_button.Enabled = true;
+                logwrite_button.Visible = true;
             }
             else
             {
-                logout_button.Enabled = false;
-                logout_button.Visible = false;
+                logwrite_button.Enabled = false;
+                logwrite_button.Visible = false;
             }
         }
 
-        // 爻位を求める。
+        // 爻位を求める処理
         public int ShuEkiHenkou(byte koui)
         {
-            int onmyou;                 // 陰陽
+            int onmyou;                 // 各爻の陰陽を判断・記憶
             Image tmpimg;               // 画像バッファ
 
             onmyou = (byte)((zeichiku.honka >> koui) & 0x01);
@@ -228,7 +233,7 @@ namespace WindowsApplication1
             return onmyou;
         }
 
-        // 占いの実体【略筮法】
+        // 占いの実体【略筮法】処理
         private void button1_Click(object sender, EventArgs e)
         {
             int loop;
@@ -312,7 +317,7 @@ namespace WindowsApplication1
                         textBox6.Text = rikujusika.youso[zeichiku.take];    // 筮竹の本数から上卦をテキスト表示
                     }
 
-                    for (loop = 0; loop <= 2; loop++)
+                    for (loop = 0; loop <= 2; loop++) // 下から、3本の筮竹を積んでいく
                     {
                         temp = (byte)((zeichiku.ka >> loop) & 0x01);
                         if (temp == yinyan.YIN)
@@ -324,7 +329,7 @@ namespace WindowsApplication1
                         {
                             yin_yan = yinyan.YAN_BMP;
                         }
-                        if (zeichiku.target == 1)
+                        if (zeichiku.target == 1)    // 下卦の表示
                         {
                             switch (loop)
                             {
@@ -341,7 +346,7 @@ namespace WindowsApplication1
                                     break;
                             }
                         }
-                        else
+                        else                       // 上卦の表示
                         {
                             switch (loop)
                             {
@@ -370,7 +375,7 @@ namespace WindowsApplication1
                 else
                 {
                     zeichiku.take %= 6;                                             // 略筮法の爻位は、6で割った余りを求める
-//                    zeichiku.take += 1;                                           // 人策を天策に加えるのが正式だが、ビットシフトの都合上、加えない。占いの結果は変わらない。
+//                    zeichiku.take += 1;                                           // 人策を天策に加えるのだが、本処理ではビットシフトの都合上、すでに加わっている
 
                     temp = ShuEkiHenkou(zeichiku.take);                             // 変爻を反映する
                     if((zeichiku.take == 0) || (zeichiku.take == 5))
@@ -386,8 +391,8 @@ namespace WindowsApplication1
 
                     this.start_button.Text = "再度占筮を行う。";
                     ShuEkiBackrollButtonOffOn(true);
-                    ShuEkiLogoutButtonOffOn(true);
-                    zeichiku.target = 0;// この値だと下位→上位→変爻で永久ループ
+                    ShuEkiLogWriteButtonOffOn(true);
+                    zeichiku.target = 0;// 下位→上位→変爻
                 }
             }
             else
@@ -395,13 +400,12 @@ namespace WindowsApplication1
                 ShuEkiClear();
                 ShuEkiClearText();
                 ShuEkiBackrollButtonOffOn(false);
-                ShuEkiLogoutButtonOffOn(false);
+                ShuEkiLogWriteButtonOffOn(false);
                 zeichiku.target++;
             } 
         }
 
-        // 後戻りボタン（本卦・之卦表示切替）
-        // 設計ミス。動きはOKだけど変数の使い方がだめ。
+        // 後戻りボタン（本卦・之卦表示切替）を押された時、表示を切り替える処理
         private void BackrollButton_Click(object sender, EventArgs e)
         {
             if (BackrollButton.Text == "本卦を見る。")
@@ -418,10 +422,10 @@ namespace WindowsApplication1
             }
         }
 
-        private void logout_button_Click(object sender, EventArgs e)
+        private void logwrite_button_Click(object sender, EventArgs e)
         {
             this.WriteLogTexts();
-            this.ShuEkiLogoutButtonOffOn(false);
+            this.ShuEkiLogWriteButtonOffOn(false);
         }
 
         private void WriteLogTexts()
