@@ -6,7 +6,7 @@
  
 # DEMO
 
-![demo](./demo_black.jpg)
+![demo](./demo_black.jpg) ![demo](./demo_white.jpg)
 
 # Features
  
@@ -25,6 +25,8 @@
 プログラムが起動したら, "易占を行う。" ボタンを押下し, 占筮を開始します.
 
 結果は, ウインドウ上部に卦象, 下部に易経本文が表示されます.
+
+.exe.config内の "BlackColorSettings" プロパティにて, 黒色／白色を設定できます.
 
 ※空欄は将来用です. 何を出力するかまだ決めていません...
  
