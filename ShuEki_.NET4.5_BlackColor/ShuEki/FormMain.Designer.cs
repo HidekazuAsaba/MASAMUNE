@@ -1,4 +1,4 @@
-﻿namespace WindowsApplication1
+﻿namespace MASAMUNE
 {
     partial class Form1
     {

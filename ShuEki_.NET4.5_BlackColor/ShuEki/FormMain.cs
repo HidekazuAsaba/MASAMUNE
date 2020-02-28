@@ -11,7 +11,7 @@ using ShuEki;
 using ShuEki.Properties;
 using System.IO;
 
-namespace WindowsApplication1
+namespace MASAMUNE
 {
     public partial class Form1 : Form
     {
@@ -37,6 +37,7 @@ namespace WindowsApplication1
                 // 黒画面モードの場合、コントロールの色を黒基調に変える
 
                 // コントロールの色をセット
+                // 　個別に設定を変更できるようにする
                 this.BackColor = Color.Black;
 
                 logwrite_button.BackColor = Color.Black;
@@ -47,11 +48,11 @@ namespace WindowsApplication1
                 start_button.ForeColor = Color.Teal;
                 BackrollButton.ForeColor = Color.Teal;
 
-                label1.ForeColor = Color.Black;
-                label2.ForeColor = Color.Black;
-                label3.ForeColor = Color.Black;
-                label4.ForeColor = Color.Black;
-                label5.ForeColor = Color.Black;
+                label1.BackColor = Color.Black;
+                label2.BackColor = Color.Black;
+                label3.BackColor = Color.Black;
+                label4.BackColor = Color.Black;
+                label5.BackColor = Color.Black;
 
                 label1.ForeColor = Color.Teal;
                 label2.ForeColor = Color.Teal;
