@@ -153,8 +153,10 @@ namespace MASAMUNE
         // テキスト出力（原文）処理
         public void ShuEkiDispTextChinensis( byte kekka, byte henkou )
         {
+            textBox1.Text = rikujusika.EkiNoGokui_Taii[kekka];
             textBox2.Text = rikujusika.genbun_taii[kekka];
-            textBox4.Text = rikujusika.genbun_tanden[henkou];
+
+            // 現状、引数のhenkou（変爻）は参照予定無し。
         }
 
         // 本卦之卦切り替えボタンの表示／非表示処理
