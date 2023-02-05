@@ -11,7 +11,7 @@
     <RootNamespace>ShuEki</RootNamespace>
     <AssemblyName>MASAMUNE</AssemblyName>
     <ApplicationIcon>blueeyes.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
